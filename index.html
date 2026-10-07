@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Coratech — Links</title>
+  <meta name="description" content="Coratech Automação Residencial: fale com a gente, veja projetos e conheça nossas soluções de automação, sonorização e home cinema.">
+  <meta name="theme-color" content="#0d1112">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Coratech — Automação Residencial Premium">
+  <meta property="og:description" content="Automação, sonorização e cinema em padrão profissional.">
+  <meta property="og:locale" content="pt_BR">
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=5">
+
+  <!-- Estilos exclusivos da página de links (cores e fontes vêm do style.css) -->
+  <style>
+    body { min-height: 100svh; }
+    .bio-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(70% 45% at 50% -5%, rgba(0, 150, 214, 0.32), transparent 70%),
+        radial-gradient(60% 40% at 50% 110%, rgba(3, 84, 87, 0.45), transparent 70%),
+        var(--bg);
+    }
+    .bio-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(60% 50% at 50% 20%, #000, transparent 75%);
+      -webkit-mask-image: radial-gradient(60% 50% at 50% 20%, #000, transparent 75%);
+      opacity: 0.6;
+    }
+
+    .bio {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: calc(48px + env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));
+    }
+
+    /* Topo: símbolo com anel animado + logotipo */
+    .bio__head { display: grid; justify-items: center; text-align: center; }
+    .avatar {
+      position: relative;
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+    }
+    .avatar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #0096d6, #035457, #007ba8, #e8833a, #0096d6);
+      animation: spin 6s linear infinite;
+    }
+    .avatar::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 35%, #1d2526, #0d1112 70%);
+    }
+    .avatar img { width: 54px; height: auto; margin-left: 4px; }
+    .avatar__glow {
+      position: absolute;
+      inset: -18px;
+      z-index: -3;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 150, 214, 0.35), transparent 65%);
+      animation: breathe 4s ease-in-out infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes breathe { 50% { transform: scale(1.12); opacity: 0.6; } }
+
+    .bio__logo { width: 210px; height: auto; margin-top: 26px; }
+    .bio__tag { margin: 16px 0 0; color: var(--muted); font-weight: 300; font-size: 1rem; line-height: 1.5; max-width: 32ch; }
+    .bio__place {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line-2);
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(238, 241, 241, 0.8);
+    }
+    .bio__place i { width: 6px; height: 6px; border-radius: 50%; background: #3ddc97; box-shadow: 0 0 10px #3ddc97; }
+
+    /* Botão principal */
+    .bio__cta { margin-top: 32px; display: grid; gap: 10px; }
+    .bio__cta .btn--want { width: 100%; padding: 19px 24px; font-size: 1.05rem; }
+    .bio__cta .btn--want svg { width: 20px; height: 20px; }
+    .bio__cta .btn--ghost { width: 100%; padding: 16px 24px; }
+
+    /* Rótulos de grupo */
+    .bio__label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 36px 0 14px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .bio__label::after { content: ''; flex: 1; height: 1px; background: var(--line-2); }
+
+    /* Cartões de link */
+    .links { display: grid; gap: 10px; }
+    .lk {
+      --mx: 50%;
+      position: relative;
+      display: grid;
+      grid-template-columns: 48px 1fr 20px;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px 14px 14px;
+      border-radius: 18px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--line-2);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform 0.45s var(--ease), border-color 0.35s, background 0.35s;
+    }
+    .lk::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(240px circle at var(--mx) 50%, rgba(0, 150, 214, 0.2), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .lk:hover, .lk:focus-visible { transform: translateY(-2px); border-color: rgba(0, 150, 214, 0.45); }
+    .lk:hover::before, .lk:focus-visible::before { opacity: 1; }
+    .lk:active { transform: scale(0.985); }
+    .lk__ico {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(0, 150, 214, 0.1);
+      border: 1px solid rgba(0, 150, 214, 0.25);
+      color: var(--blue);
+    }
+    .lk__ico svg { width: 22px; height: 22px; }
+    .lk b { display: block; font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; }
+    .lk small { display: block; margin-top: 2px; font-size: 0.82rem; color: var(--muted); line-height: 1.35; }
+    .lk__arrow { width: 18px; height: 18px; color: var(--muted); transition: transform 0.4s var(--ease), color 0.3s; }
+    .lk:hover .lk__arrow { transform: translateX(3px); color: #fff; }
+
+    /* Faixa de fotos */
+    .shots { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 8px; }
+    .shots a {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line-2);
+      background: var(--surface-2) center / cover no-repeat;
+      transition: transform 0.5s var(--ease);
+    }
+    .shots a:first-child { aspect-ratio: auto; }
+    .shots a::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(8, 11, 12, 0.7), transparent 55%); }
+    .shots a:hover { transform: translateY(-3px); }
+    .shots span { position: absolute; left: 12px; bottom: 10px; z-index: 1; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; }
+    .shots__more {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--blue);
+    }
+    .shots__more svg { width: 16px; height: 16px; transition: transform 0.4s var(--ease); }
+    .shots__more:hover svg { transform: translateX(3px); }
+
+    /* Ícones de contato */
+    .quick { display: flex; justify-content: center; gap: 12px; margin-top: 36px; }
+    .quick a {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--line-2);
+      background: rgba(255, 255, 255, 0.03);
+      transition: all 0.35s var(--ease);
+    }
+    .quick a:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-3px); }
+    .quick svg { width: 20px; height: 20px; }
+
+    .bio__foot { margin-top: 36px; text-align: center; font-size: 0.75rem; color: var(--muted); line-height: 1.7; }
+    .bio__foot a { text-decoration: underline; text-underline-offset: 3px; }
+    .bio__foot a:hover { color: #fff; }
+    .bio__dots { display: inline-flex; gap: 6px; margin-top: 10px; }
+    .bio__dots i { width: 7px; height: 7px; border-radius: 50%; }
+
+    /* Entrada em cascata */
+    .in { opacity: 0; transform: translateY(18px); animation: fadeUp 0.9s var(--ease) forwards; animation-delay: calc(var(--i, 0) * 70ms + 100ms); }
+    @media (prefers-reduced-motion: reduce) { .in { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body>
+  <div class="bio-bg" aria-hidden="true"></div>
+
+  <!-- =====================================================================
+       PÁGINA DE LINKS (bio do Instagram) — links.coratechbr.com
+       Projeto separado na Vercel. Os links apontam para www.coratechbr.com.
+       Os dados de contato vêm do CONFIG em assets/js/main.js
+       (se mudar WhatsApp/e-mail, altere também no main.js do site).
+       Para adicionar um link, copie um bloco <a class="lk ...">…</a>.
+       ===================================================================== -->
+  <main class="bio">
+
+    <header class="bio__head">
+      <div class="avatar in" style="--i:0">
+        <span class="avatar__glow"></span>
+        <img src="assets/img/simbolo.svg" alt="" width="84" height="94">
+      </div>
+      <img class="bio__logo in" style="--i:1" src="assets/img/logo-claro.svg" alt="Coratech Automação Residencial" width="363" height="86">
+      <p class="bio__tag in" style="--i:2">Automação, sonorização e cinema em padrão profissional — sob medida para a sua casa.</p>
+      <span class="bio__place in" style="--i:3"><i></i>Ijuí · RS</span>
+    </header>
+
+    <div class="bio__cta">
+      <a class="btn btn--want in" style="--i:4" href="#" data-link="whatsapp" data-msg="Olá! Vim pelo Instagram da Coratech e quero isso para mim! Podemos conversar?" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7a11.5 11.5 0 0 1-4.6-4.1c-.5-.7-1.1-1.9-1.1-3.1 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
+        Quero isso para mim!
+      </a>
+      <a class="btn btn--ghost in" style="--i:5" href="#" data-link="whatsapp" data-msg="Olá! Vim pelo Instagram da Coratech e gostaria de agendar uma visita técnica." target="_blank" rel="noopener">
+        Agendar uma visita técnica
+      </a>
+    </div>
+
+    <div class="bio__label in" style="--i:6">Conheça</div>
+    <nav class="links" aria-label="Links">
+      <a class="lk in" style="--i:7" href="https://www.coratechbr.com/?utm_source=instagram&amp;utm_medium=bio">
+        <span class="lk__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+        <span><b>Nosso site</b><small>Tudo sobre a Coratech</small></span>
+        <svg class="lk__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="lk in" style="--i:8" href="https://www.coratechbr.com/?utm_source=instagram&amp;utm_medium=bio#automacao">
+        <span class="lk__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/><path d="M9.5 9.5a3.5 3.5 0 0 1 5 0"/></svg></span>
+        <span><b>Automação residencial</b><small>Luz, cortinas, clima e cenas a um toque</small></span>
+        <svg class="lk__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="lk in" style="--i:9" href="https://www.coratechbr.com/?utm_source=instagram&amp;utm_medium=bio#sonorizacao">
+        <span class="lk__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><circle cx="12" cy="6.5" r="1"/></svg></span>
+        <span><b>Sonorização</b><small>Música em cada ambiente</small></span>
+        <svg class="lk__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="lk in" style="--i:10" href="https://www.coratechbr.com/?utm_source=instagram&amp;utm_medium=bio#cinema">
+        <span class="lk__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M7 21h10M10 8.5l4.5 2.5-4.5 2.5z"/></svg></span>
+        <span><b>Home cinema</b><small>A sala de cinema dentro de casa</small></span>
+        <svg class="lk__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </nav>
+
+    <div class="bio__label in" style="--i:11">Projetos</div>
+    <div class="shots in" style="--i:12">
+      <a href="https://www.coratechbr.com/?utm_source=instagram&amp;utm_medium=bio#projetos" style="background-image:url('assets/img/projetos/living-integrado.jpg'); background-position: 40% center" aria-label="Living integrado"><span>Living</span></a>
+      <a href="https://www.coratechbr.com/?utm_source=instagram&amp;utm_medium=bio#projetos" style="background-image:url('assets/img/projetos/home-theater.jpg')" aria-label="Home theater"><span>Home theater</span></a>
+      <a href="https://www.coratechbr.com/?utm_source=instagram&amp;utm_medium=bio#projetos" style="background-image:url('assets/img/projetos/tela-e-teclado-de-cenas.jpg'); background-position: center 30%" aria-label="Interfaces"><span>Interfaces</span></a>
+    </div>
+    <a class="shots__more in" style="--i:13" href="https://www.coratechbr.com/?utm_source=instagram&amp;utm_medium=bio#projetos">
+      Ver todos os projetos
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+    <div class="quick in" style="--i:14">
+      <a href="#" data-link="whatsapp" data-msg="Olá! Vim pelo Instagram da Coratech." aria-label="WhatsApp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+      </a>
+      <a href="#" data-link="email" aria-label="E-mail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      </a>
+      <a href="#" data-link="mapa" aria-label="Como chegar" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      </a>
+      <a href="https://www.coratechbr.com/?utm_source=instagram&amp;utm_medium=bio" aria-label="Site">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+      </a>
+    </div>
+
+    <footer class="bio__foot in" style="--i:15">
+      <span data-text="endereco">Rua Bento Gonçalves, 366, Sala 4 — Centro, Ijuí/RS</span><br>
+      © <span data-year>2026</span> Coratech Ltda · <a href="https://www.coratechbr.com/privacidade.html">Privacidade</a>
+      <div><span class="bio__dots"><i style="background:#0096d6"></i><i style="background:#035457"></i><i style="background:#e8833a"></i></span></div>
+    </footer>
+  </main>
+
+  <script src="assets/js/main.js?v=5"></script>
+  <script>
+    // brilho que acompanha o dedo/cursor nos cartões
+    document.querySelectorAll('.lk').forEach((c) => c.addEventListener('pointermove', (e) => {
+      const r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    }));
+  </script>
+</body>
+</html>
