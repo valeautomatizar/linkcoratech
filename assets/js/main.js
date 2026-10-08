@@ -5,8 +5,8 @@
    >>> em todas as páginas (botões de WhatsApp, e-mail, Instagram, rodapé…).
    ========================================================================= */
 const CONFIG = {
-  whatsapp: '5555999222734',              // 55 (Brasil) + DDD + número, só dígitos
-  telefone: '(55) 99922-2734',            // como o número aparece no site
+  whatsapp: '5555992141406',              // 55 (Brasil) + DDD + número, só dígitos
+  telefone: '(55) 99214-1406',            // como o número aparece no site
   email: 'atendimento@coratechbr.com',
   instagram: '',                          // ex.: 'https://instagram.com/coratech' (vazio = esconde o ícone)
   endereco: 'Rua Bento Gonçalves, 366, Sala 4 — Centro, Ijuí/RS', // vazio = esconde a linha no contato
